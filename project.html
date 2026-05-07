@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ares Command Center | Mars OS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="overlay" id="game-over-overlay">
+        <div class="modal">
+            <h1 class="danger-text">МІСІЯ ПРОВАЛЕНА</h1>
+            <p id="death-reason">Колонія втратила життєздатність.</p>
+            <button onclick="location.reload()" class="btn">Перезапустити систему</button>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Шапка: Статус місії -->
+        <header class="main-header">
+            <div class="logo">ARES OS <span class="version">v1.0.4</span></div>
+            <div class="status-indicator">СТАТУС: <span id="system-status" class="status-ok">АКТИВНО</span></div>
+        </header>
+
+        <main class="dashboard">
+            <!-- Блок ресурсів -->
+            <section class="resources-grid">
+                <!-- Кисень -->
+                <div class="resource-card" id="card-oxygen">
+                    <div class="resource-info">
+                        <span class="label">КИСЕНЬ (O₂)</span>
+                        <span class="value" id="val-oxygen">100%</span>
+                    </div>
+                    <div class="progress-bar"><div class="fill" id="bar-oxygen"></div></div>
+                </div>
+
+                <!-- Енергія -->
+                <div class="resource-card" id="card-energy">
+                    <div class="resource-info">
+                        <span class="label">ЕНЕРГІЯ (⚡)</span>
+                        <span class="value" id="val-energy">100%</span>
+                    </div>
+                    <div class="progress-bar"><div class="fill" id="bar-energy"></div></div>
+                </div>
+
+                <!-- Їжа -->
+                <div class="resource-card" id="card-food">
+                    <div class="resource-info">
+                        <span class="label">ПРОДУКТИ (🍞)</span>
+                        <span class="value" id="val-food">100%</span>
+                    </div>
+                    <div class="progress-bar"><div class="fill" id="bar-food"></div></div>
+                </div>
+
+                <!-- Населення -->
+                <div class="resource-card" id="card-pop">
+                    <div class="resource-info">
+                        <span class="label">ЛЮДИ (👨‍🚀)</span>
+                        <span class="value" id="val-pop">12</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Блок дій -->
+            <section class="actions-panel">
+                <h2 class="panel-title">Команди управління</h2>
+                <div class="button-group">
+                    <button class="action-btn" onclick="game.performAction('oxygen')">Генерація O₂ <small>(-15⚡)</small></button>
+                    <button class="action-btn" onclick="game.performAction('energy')">Сонячні панелі <small>(+20⚡)</small></button>
+                    <button class="action-btn" onclick="game.performAction('food')">Гідропоніка <small>(-15⚡)</small></button>
+                </div>
+            </section>
+
+            <!-- Блок логів (Історія подій) -->
+            <section class="logs-panel">
+                <h2 class="panel-title">Журнал подій</h2>
+                <div class="logs-container" id="logs">
+                    <div class="log-entry">Система завантажена... Вітаємо, Командоре.</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
